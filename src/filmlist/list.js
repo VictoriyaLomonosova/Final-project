@@ -1,28 +1,31 @@
-import template from "lodash.template";
-import html from "./index.html";
-const filmsList = require("./film.json");
+import {renderTemplate} from "../template.utils"
+import listHtml from "./index.html"
+import filmsList from "./film.json"
+import { getHistory } from "../app-history";
+console.log(listHtml)
+const history = getHistory();
 
-const templateRenderer = template(html);
 
 class List {
   constructor() {
-    this.films = [];
+      this.films = renderTemplate(listHtml, {filmsList});
+    console.log(this.films)
+  }
 
-    for (let i = 0; i < filmsList.length; i++) {
-      const film = filmsList[i];
-      this.films.push(film);
-    }
+  onClick(event) {
+      if (event.target.tagName !== "button") return;
+
+      event.preventDefault();
+      history.push(event.target.href);
   }
 
   render() {
-    const temp = templateRenderer({
-      films: this.films,
-    });
+    this.films.addEventListener("click", this.onClick.bind(this));
 
-    const container = document.createElement("div");
-    container.className = "cardElem";
-    container.innerHTML = temp;
-    document.addEventListener("click", (event) => {
+    
+const container=document.querySelector("div")
+    container.addEventListener("click", (event) => {
+
       switch (event.target.dataset.id) {
         case "edit":
           console.log("Edit");
@@ -34,12 +37,13 @@ class List {
           console.log("Read more");
           break;
         default:
-          console.log("Something went wrong");
-      }
-    });
+          console.log("Something went wrong");   }
+    })
 
-    document.body.appendChild(container);
-  }
+          return this.films
+         
 }
+} 
+
 
 export default List;

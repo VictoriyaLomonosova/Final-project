@@ -1,4 +1,6 @@
-<% films.forEach(function(film) { %>
+
+<div class="cardElem">
+  <% filmsList.forEach(function(film) { %>
     <div class="card mt-3" style="max-width: 48%;">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -9,7 +11,7 @@
             <h5 class="card-title"><%-film.name%></h5>
             <p class="card-text"><%-film.description%></p>
             <p class="card-text"><small class="text-muted font-weight-bold"><%-film.rating%></small></p>
-            <div class="card-text"><a href="#list-1" class="more" data-id="more">Подробнее...</a></div>
+            <div class="card-text"><a href="/list-1" class="more" data-id="more">Подробнее...</a></div>
           </div>
         </div>
         <div class="card-footer">
@@ -30,4 +32,4 @@
         </div>
       </div>
     </div>
-    <% }); %>
+    <% }); %></div>
