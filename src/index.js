@@ -32,9 +32,7 @@ function renderRoute(path) {
         const list = new List();
       main.appendChild(list.render());
       break;
-    /* case "/":
-            p.innerText = "PRODUCTS";
-            break;*/
+
     default:
       console.log("404");
       break;
