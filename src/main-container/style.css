@@ -1,0 +1,4 @@
+.cardElem{
+    display: flex;
+    flex-wrap: wrap;
+}
